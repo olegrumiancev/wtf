@@ -9,6 +9,8 @@ import (
 	"sort"
 	"strings"
 
+	"net/url"
+
 	"github.com/mmcdole/gofeed"
 	"github.com/rivo/tview"
 	"github.com/wtfutil/wtf/utils"
@@ -260,7 +262,15 @@ func (widget *Widget) openStory() {
 		story := widget.stories[sel]
 		story.viewed = true
 
-		utils.OpenFile(story.item.Link)
+		comments := story.item.GUID
+		link := story.item.Link
+		u, err := url.ParseRequestURI(comments)
+		if err == nil {
+			utils.OpenFile(u.String())
+		} else {
+			utils.OpenFile(link)
+		}
+		//utils.OpenFile(story.item.Link)
 	}
 }
 
