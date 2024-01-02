@@ -3,7 +3,9 @@ package yfinance
 import (
 	"github.com/jedib0t/go-pretty/v6/table"
 	"github.com/jedib0t/go-pretty/v6/text"
-	"github.com/piquette/finance-go/quote"
+
+	//"github.com/piquette/finance-go/quote"
+	"github.com/piquette/finance-go v1.1.1-0.20230807033903-430a57233430/quote"
 )
 
 type MarketState string
